@@ -48,4 +48,4 @@ form:nth-child(1)>div:nth-child(1)>p:nth-child(1)
 getPath.js:40 <p>​P1​</p>​
 getPath.js:41 NodeList [p]0: plength: 1__proto__: NodeList
 
-/*
+*/
