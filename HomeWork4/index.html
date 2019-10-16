@@ -1,0 +1,181 @@
+
+<script>
+
+function createChildNode(id, items) {
+  const node = document.createElement('my-leaf')
+  node.id = id
+  node.items = items
+  return node
+}
+
+ class MyTree extends HTMLElement { //MyTree - компонент, отображающий дерево
+  constructor() {
+    super()
+    this.attachShadow({ mode: 'open' })
+    this._tree = {}
+  }
+  set tree(value) {
+    this._tree = value
+    this.render()
+  }
+  get tree() {
+    return this._tree
+  }
+  connectedCallback() {
+    this.render()
+  }
+  render() {
+    this.shadowRoot.innerHTML = `
+          <style>
+              :host {
+                display: block;
+                background-color: lightblue;
+                color: #333;
+                padding:32px;
+              }
+            </style>
+          `
+    const rootNode = createChildNode(this.tree.id, this.tree.items)
+    this.shadowRoot.appendChild(rootNode)
+  }
+}
+
+class MyLeaf extends HTMLElement { //MyLeaf - компонент, отображающий поддерево
+  constructor() {
+    super()
+    this.attachShadow({ mode: 'open' })
+  }
+ 
+  set id(value) {  //Имеет свойство id - код
+    this._id = value
+    this.render()
+  }
+  get id() {
+    return this._id
+  }
+  set items(value) { //Может иметь свойство items - массив дочерних элементов 
+    this._items = value
+    this.render()
+  }
+  get items() {
+    return this._items
+  }
+  render() {
+    this.shadowRoot.innerHTML = `
+            <style>
+              :host {
+                display: block;
+                background-color: #888;
+                color: #FFF;
+                padding:4px;
+                padding-left:24px;
+              }
+            </style>
+            <div>#${this.id}</div>
+          `
+    if (Array.isArray(this.items)) {
+      this.items.forEach(item => {
+        const childNode = createChildNode(item.id, item.items)
+       // debugger
+        this.shadowRoot.appendChild(childNode)
+      })
+    }
+  }
+}
+
+function registerComponents() {
+  window.customElements.define('my-tree', MyTree)
+  window.customElements.define('my-leaf', MyLeaf)
+}
+
+
+
+
+</script>
+
+<html>
+  <head>
+    <title>
+      Custom tree
+    </title>
+      
+  </head>
+  <body>
+1-ое дерево
+  <my-tree>  </my-tree>
+2-ое дерево
+  <my-tree>  </my-tree>
+3-e дерево
+  <my-tree>  </my-tree>
+......
+<br>......
+<br>N-ое дерево
+<my-tree>  </my-tree>
+ <script>
+
+registerComponents()
+
+/*
+ * Структура дерева типа:
+ * {
+ *   id: 1,
+ *   items: [
+ *    {
+ *      id: 2,
+ *      items: [
+ *        {
+ *          id: 3
+ *        }
+ *      ]
+ *    }
+ *  ]
+ * }
+ * - Один корневой элемент
+ * - Каждый элемент имеет атрибут id
+ * - Каждый элемент может иметь items - массив дочерних элементов
+*/
+
+document.addEventListener('DOMContentLoaded', function(event) {
+  const treeData =  {
+    id: 1,
+    items: [
+      {
+        id: 2,
+        items: [
+          {
+            id: 3,
+          },
+          {
+            id: 4,
+          },
+          {
+            id: 5,
+          }
+        ],
+      },
+      {
+        id: 6
+      }
+    ],
+  }
+
+ 
+const myTree = document.getElementsByTagName('my-tree')
+  
+  let x=0
+  while (myTree[x]) {  // на случай если будет несколько тегов my-tree
+  
+     // debugger
+    myTree[x].tree = treeData //объект получает дерево через установку свойства tree 
+  
+
+x++
+}
+
+
+})
+
+  
+  </script>
+  </body>
+  </html>
