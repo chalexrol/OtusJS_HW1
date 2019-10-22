@@ -21,32 +21,31 @@ request(10, 'serial'); - 10 последовательных
 результат: - паралельные все вышли практически одновременно 100 ms + еще время работы цикла - а последовательные друг за дружкой благодаря await
 
 parallel output (5): Hello World!
-request.js:27
-parallel output (5): Hello World!
-request.js:27
-parallel output (5): Hello World!
-request.js:27
-parallel output (5): Hello World!
-request.js:27
-parallel output (5): Hello World!
-request.js:27
-serial output (0): Hello World!
-request.js:36
-serial output (1): Hello World!
-request.js:36
-serial output (2): Hello World!
-request.js:36
-serial output (3): Hello World!
-request.js:36
-serial output (4): Hello World!
-request.js:36
-serial output (5): Hello World!
-request.js:36
-serial output (6): Hello World!
-request.js:36
-serial output (7): Hello World!
-request.js:36
-serial output (8): Hello World!
-request.js:36
-serial output (9): Hello World!
 
+parallel output (5): Hello World!
+
+parallel output (5): Hello World!
+
+parallel output (5): Hello World!
+
+parallel output (5): Hello World!
+
+serial output (0): Hello World!
+
+serial output (1): Hello World!
+
+serial output (2): Hello World!
+
+serial output (3): Hello World!
+
+serial output (4): Hello World!
+
+serial output (5): Hello World!
+
+serial output (6): Hello World!
+
+serial output (7): Hello World!
+
+serial output (8): Hello World!
+
+serial output (9): Hello World!
