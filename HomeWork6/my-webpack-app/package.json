@@ -1,0 +1,21 @@
+{
+  "name": "my-webpack-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "lodash": "^4.17.15",
+    "save-dev": "0.0.1-security",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
+  }
+}
