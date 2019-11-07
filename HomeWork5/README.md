@@ -13,39 +13,20 @@
 
 
 2) request.js - асинхронная функция reqest реализована где создаются паралельные запросы обычным циклом и последовательные с await (в итоге ждет завершения от сервера задержки) 
+запуск: node request.js <num>  <type> - где num - количество запросов ; type - тип serial или parallel
 
 Пример 
-request(5, 'parallel'); - 5 паралельных
-request(10, 'serial'); - 10 последовательных
 
-результат: - паралельные все вышли практически одновременно 100 ms + еще время работы цикла - а последовательные друг за дружкой благодаря await
-
-parallel output (5): Hello World!
-
-parallel output (5): Hello World!
-
-parallel output (5): Hello World!
-
-parallel output (5): Hello World!
-
-parallel output (5): Hello World!
-
+PS C:\Users\Alex Chukhvantsev\Documents\OTUS\HW5\OtusJS_HomeWorks\HomeWork5> node request.js 5 serial
 serial output (0): Hello World!
-
 serial output (1): Hello World!
-
 serial output (2): Hello World!
-
 serial output (3): Hello World!
-
 serial output (4): Hello World!
-
-serial output (5): Hello World!
-
-serial output (6): Hello World!
-
-serial output (7): Hello World!
-
-serial output (8): Hello World!
-
-serial output (9): Hello World!
+PS C:\Users\Alex Chukhvantsev\Documents\OTUS\HW5\OtusJS_HomeWorks\HomeWork5> node request.js 5 parallel
+parallel output (5): Hello World!
+parallel output (5): Hello World!
+parallel output (5): Hello World!
+parallel output (5): Hello World!
+parallel output (5): Hello World!
+PS C:\Users\Alex Chukhvantsev\Documents\OTUS\HW5\OtusJS_HomeWorks\HomeWork5> 
