@@ -44,5 +44,8 @@ const request = async (N, type) => {
 }
 
 
-request(5, 'parallel');
-request(10, 'serial');
+let num = process.argv[2];
+let type = process.argv[3];
+
+request(num, type);
+
