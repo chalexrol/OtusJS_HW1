@@ -19,8 +19,7 @@ const actions = {
 
     saveChannel (req, res, next) {
         // checking data
-        if(typeof req.body.title !== 'string' || req.body.title.length === 0
-        || typeof req.body.link !== 'string'  || req.body.link.length === 0) {
+        if(req.body.title.length === 0||req.body.link.length === 0) {
             let errorText = 'Parameters are expected not all';
             logger.error(errorText);
             res.status(422).send({ error: errorText });
